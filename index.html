@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotDePasse123 - Votre Guide de Sécurité Internet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #63b3ed;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2d3748;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .blog-excerpt {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .read-more {
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .read-more:hover {
+            color: #2c5282;
+        }
+
+        /* Security Tips */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #48bb78;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .tip-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .newsletter h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 2rem auto 0;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-button:hover {
+            background: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #63b3ed;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                🔐 MotDePasse123
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#conseils">Conseils</a></li>
+                <li><a href="#outils">Outils</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="animate-fade-in">
+            <h1>Protégez-vous en ligne</h1>
+            <p>Votre guide complet pour une sécurité internet optimale</p>
+            <a href="#conseils" class="cta-button">Découvrir nos conseils</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Blog Section -->
+        <section class="section" id="blog">
+            <h2 class="section-title">📰 Derniers Articles</h2>
+            <div class="blog-grid">
+                <article class="blog-card" onclick="openArticle('phishing')">
+                    <div class="blog-image">🎣</div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Comment Reconnaître un Email de Phishing</h3>
+                        <p class="blog-excerpt">Apprenez à identifier les signes d'un email frauduleux et protégez-vous des tentatives d'hameçonnage...</p>
+                        <div class="blog-meta">
+                            <span>5 min de lecture</span>
+                            <a href="#" class="read-more">Lire plus →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" onclick="openArticle('passwords')">
+                    <div class="blog-image">🔑</div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Guide des Mots de Passe Sécurisés</h3>
+                        <p class="blog-excerpt">Créez des mots de passe forts et utilisez un gestionnaire pour protéger tous vos comptes...</p>
+                        <div class="blog-meta">
+                            <span>7 min de lecture</span>
+                            <a href="#" class="read-more">Lire plus →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" onclick="openArticle('2fa')">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">L'Authentification à Deux Facteurs Expliquée</h3>
+                        <p class="blog-excerpt">Renforcez la sécurité de vos comptes avec cette couche de protection supplémentaire...</p>
+                        <div class="blog-meta">
+                            <span>4 min de lecture</span>
+                            <a href="#" class="read-more">Lire plus →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" onclick="openArticle('wifi')">
+                    <div class="blog-image">📶</div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Sécurité des Réseaux WiFi Publics</h3>
+                        <p class="blog-excerpt">Les précautions à prendre lors de l'utilisation de WiFi gratuits dans les lieux publics...</p>
+                        <div class="blog-meta">
+                            <span>6 min de lecture</span>
+                            <a href="#" class="read-more">Lire plus →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" onclick="openArticle('social')">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Paramètres de Confidentialité sur les Réseaux Sociaux</h3>
+                        <p class="blog-excerpt">Configurez correctement vos comptes Facebook, Instagram, Twitter pour protéger votre vie privée...</p>
+                        <div class="blog-meta">
+                            <span>8 min de lecture</span>
+                            <a href="#" class="read-more">Lire plus →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card" onclick="openArticle('backup')">
+                    <div class="blog-image">💾</div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">Stratégies de Sauvegarde Efficaces</h3>
+                        <p class="blog-excerpt">Protégez vos données importantes avec des stratégies de sauvegarde automatisées et sécurisées...</p>
+                        <div class="blog-meta">
+                            <span>5 min de lecture</span>
+                            <a href="#" class="read-more">Lire plus →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Security Tips -->
+        <section class="section" id="conseils">
+            <h2 class="section-title">⚡ Conseils Sécurité Express</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🔒</div>
+                    <h4 class="tip-title">Mots de Passe Uniques</h4>
+                    <p>Utilisez un mot de passe différent pour chaque compte. Un gestionnaire de mots de passe peut vous aider à les gérer.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔄</div>
+                    <h4 class="tip-title">Mises à Jour Régulières</h4>
+                    <p>Maintenez vos logiciels, applications et systèmes d'exploitation à jour pour bénéficier des derniers correctifs de sécurité.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🛡️</div>
+                    <h4 class="tip-title">Antivirus Actif</h4>
+                    <p>Utilisez un antivirus fiable et maintenez-le actif en permanence pour détecter les menaces en temps réel.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🔍</div>
+                    <h4 class="tip-title">Vérifiez les URLs</h4>
+                    <p>Avant de cliquer sur un lien ou de saisir des informations sensibles, vérifiez toujours l'URL du site web.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📧</div>
+                    <h4 class="tip-title">Emails Suspects</h4>
+                    <p>Ne cliquez jamais sur des liens ou pièces jointes dans des emails non sollicités ou suspects.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🌐</div>
+                    <h4 class="tip-title">Navigation Sécurisée</h4>
+                    <p>Recherchez le cadenas 🔒 dans la barre d'adresse et assurez-vous que l'URL commence par "https://".</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h3>📬 Restez Informé</h3>
+            <p>Recevez nos conseils de sécurité et alertes directement dans votre boîte mail</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
+                <button type="submit" class="newsletter-button">S'abonner</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MotDePasse123</h4>
+                <p>Votre partenaire de confiance pour la sécurité en ligne. Protégez-vous, protégez vos données.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#conseils">Conseils</a></li>
+                    <li><a href="#outils">Outils</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ressources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Guide des débutants</a></li>
+                    <li><a href="#">Générateur de mots de passe</a></li>
+                    <li><a href="#">Test de sécurité</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="#">contact@motdepasse123.com</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #4a5568; padding-top: 2rem; margin-top: 2rem;">
+            <p>&copy; 2025 MotDePasse123. Tous droits réservés. | Conçu pour votre sécurité en ligne.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Article Navigation
+        function openArticle(articleId) {
+            const articles = {
+                'phishing': 'Comment Reconnaître un Email de Phishing',
+                'passwords': 'Guide des Mots de Passe Sécurisés',
+                '2fa': 'L\'Authentification à Deux Facteurs Expliquée',
+                'wifi': 'Sécurité des Réseaux WiFi Publics',
+                'social': 'Paramètres de Confidentialité sur les Réseaux Sociaux',
+                'backup': 'Stratégies de Sauvegarde Efficaces'
+            };
+            
+            alert(`Redirection vers l'article: ${articles[articleId]}\n\nCette fonctionnalité sera disponible une fois le site déployé!`);
+        }
+
+        // Newsletter Subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Merci ${email}! Vous êtes maintenant abonné à notre newsletter sécurité.\n\nCette fonctionnalité sera connectée à votre système d'emailing une fois le site déployé.`);
+            event.target.reset();
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.blog-card, .tip-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
